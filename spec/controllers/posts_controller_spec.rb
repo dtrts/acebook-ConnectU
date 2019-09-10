@@ -2,10 +2,14 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
   describe 'GET /new ' do
-    it 'responds with 200' do
+    it 'responds with 200 when signed in' do
       sign_in
       get :new
       expect(response).to have_http_status(200)
+    end
+    it 'redirects when not signed in' do
+      get :new
+      expect(response).to have_http_status(302)
     end
   end
 
@@ -24,10 +28,8 @@ RSpec.describe PostsController, type: :controller do
     it 'creates a post with correct user_id' do
       user = sign_in
       post :create, params: { post: { message: 'Hello, world!1111' } }
-      a_post = Post.find_by(message: 'Hello, world!1111')
-      puts a_post
-      p a_post
-      expect(a_post.user_id).to eq(user.id)
+      a_post = Post.find_by(message: 'Hello, world!1111',user_id: user.id)
+      expect(a_post).to be
     end
   end
 
