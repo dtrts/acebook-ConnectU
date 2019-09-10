@@ -109,3 +109,13 @@ require_relative './app/models/application_record.rb'
 require_relative './app/models/user.rb'
 require_relative './app/models/post.rb'
 ```
+
+## More Testing with databases
+[Useful article](https://madeintandem.com/blog/setting-up-rspec-and-capybara-in-rails-5-for-testing/)
+
+In `/spec/rails_helper.rb` there is a line:
+`config.use_transactional_fixtures = true`. This rolls back all the changes from any test.
+This may get confusing with javascript due to the lack of order.
+See link above to see how to set up a database cleaner. This allows you to set up your own transactions in a sense.
+
+[Database Cleaner Gem](https://github.com/DatabaseCleaner/database_cleaner)
