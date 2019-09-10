@@ -18,7 +18,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = params[:user_id] ? Post.where(user_id: params[:user_id]) : Post.all
+    @posts.order!(created_at: :desc)
   end
 
   private
