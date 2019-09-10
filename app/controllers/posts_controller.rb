@@ -4,7 +4,16 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(post_params)
+    # don't need a guard clause since application controller will redirect if not signed in
+    # p 'creating'
+    # post_params[:user_id] = current_user.id
+    # NOt sure how to add to params but can add to new record before saving
+    # p post_params
+    post_params.key?(:user_id)
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    # p @post
+    @post.save!
     redirect_to posts_url
   end
 

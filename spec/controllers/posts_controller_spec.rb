@@ -21,6 +21,14 @@ RSpec.describe PostsController, type: :controller do
       post :create, params: { post: { message: 'Hello, world!' } }
       expect(Post.find_by(message: 'Hello, world!')).to be
     end
+    it 'creates a post with correct user_id' do
+      user = sign_in
+      post :create, params: { post: { message: 'Hello, world!1111' } }
+      a_post = Post.find_by(message: 'Hello, world!1111')
+      puts a_post
+      p a_post
+      expect(a_post.user_id).to eq(user.id)
+    end
   end
 
   describe 'GET /' do

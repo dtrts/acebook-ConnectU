@@ -9,7 +9,8 @@ RSpec.describe Post, type: :model do
     puts Post.first.created_at
     puts Post.first.updated_at
   end
-  it 'doesn\t persist records across tests' do
+
+  it 'doesn\'t persist records across tests' do
     puts Post.all
     expect(Post.first).to eq(nil)
     puts Post.first
