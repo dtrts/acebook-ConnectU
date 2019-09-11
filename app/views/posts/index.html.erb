@@ -1,5 +1,4 @@
 <div class="new-post">
-
   <%= link_to new_post_path do %>
   New post
   <% end %>
@@ -11,7 +10,7 @@
     <p><small><%= post.created_at %></small></p>
     <% if current_user.id == post.user_id -%>
     <%= button_to "Delete Post", post_path(post), method: :delete %>
-
+    <%= button_to "Edit Post", edit_post_path(post), method: :get %>
     <% end -%>
   </div>
   <% end %>

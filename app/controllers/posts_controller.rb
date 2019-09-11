@@ -13,6 +13,10 @@ class PostsController < ApplicationController
     redirect_to posts_url
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
   def index
     @posts = params[:user_id] ? Post.where(user_id: params[:user_id]) : Post.all
     @posts.order!(created_at: :desc)
