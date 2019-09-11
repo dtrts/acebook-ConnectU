@@ -16,7 +16,7 @@ RSpec.feature 'Edit post', type: :feature do
     expect(page).to have_content('Post successfully updated')
   end
 
-  scenario 'Cannot delete other user post' do
+  scenario 'Cannot edit other user post' do
     sign_in
     visit '/posts/new'
     fill_in :"post[message]", with: 'This is a message'
@@ -24,7 +24,8 @@ RSpec.feature 'Edit post', type: :feature do
     sign_out
     sign_in
     visit '/posts'
-    # expect(page).to have_content('Cannot delete another user\'s posts')
-    expect(page).not_to have_button('Edit Post')
+    click_button 'Edit Post'
+    expect(page).to have_content("Cannot update another user's posts")
+    # expect(page).not_to have_button('Edit Post')
   end
 end

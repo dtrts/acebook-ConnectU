@@ -1,11 +1,10 @@
 class PostsController < ApplicationController
-
   def index
     @posts = params[:user_id] ? Post.where(user_id: params[:user_id]) : Post.all
     @posts.order!(created_at: :desc)
     @user = current_user
   end
-  
+
   def new
     @post = Post.new
   end
@@ -22,28 +21,30 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+
+    if @post.user_id != current_user.id
+      flash[:error] = 'Cannot update another user\'s posts, unfortunately.'
+      redirect_to posts_url
+    end
+
+    if @post.created_at < Time.now - 10.minutes
+      flash[:error] = 'It has been 10 minutes since post creation. Unable to edit'
+      redirect_to posts_url
+    end
   end
-
-
-
 
   def update
     @post = Post.find(params[:id])
 
     if @post.user_id == current_user.id
-      if @post.created_at < Time.now - 10.minutes
-        flash[:error] = 'It has been 10 minutes since post creation. Unable to edit'
-      else
-        @post.update(post_params) # Post.update(@post.id, post_params)
-        flash[:message] = 'Post successfully updated. Just in time!'
-      end
+      @post.update(post_params) # Post.update(@post.id, post_params)
+      flash[:message] = 'Post successfully updated. Just in time!'
     else
       flash[:error] = "Cannot update another user's posts, unfortunately."
     end
-    redirect_to user_posts_url
+
+    redirect_to posts_url
   end
-
-
 
   def destroy
     @post = Post.find(params[:id])
@@ -53,7 +54,7 @@ class PostsController < ApplicationController
     else
       flash[:error] = "Cannot delete another user's posts, no matter how man mistakes they make."
     end
-    redirect_to user_posts_url
+    redirect_to posts_url
   end
 
   private
