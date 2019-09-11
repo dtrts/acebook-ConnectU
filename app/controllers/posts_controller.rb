@@ -30,6 +30,17 @@ class PostsController < ApplicationController
     redirect_to user_posts_url
   end
 
+  def update
+    @post = Post.find(params[:id])
+    if @post.user_id == current_user.id
+      @post.update(post_params)
+      flash[:message] = 'Post successfully updated. Just in time!'
+    else
+      flash[:error] = "Cannot update another user's posts, unfortunately."
+    end
+    redirect_to user_posts_url
+  end
+
   private
 
   def post_params

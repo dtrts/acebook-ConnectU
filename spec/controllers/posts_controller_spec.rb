@@ -41,6 +41,16 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+  describe 'PATCH' do
+    it 'will update a post' do
+      user = sign_in
+      post :create, params: { post: { message: 'Hello, world!123' } }
+      post = Post.find_by(message: 'Hello, world!123')
+      patch :update, params: { id: Post.first.id, post: { message: 'Funky town' } }
+      expect(Post.find(post.id).message).to eq('Funky town')
+    end
+  end
+
   describe 'DELETE' do
     it 'will not delete a post of a different user' do
       user = sign_in
