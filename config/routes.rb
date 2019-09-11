@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   resources :passwords, controller: 'clearance/passwords', only: %i[create new]
   resource :session, controller: 'sessions', only: [:create]
-
   resources :users, controller: 'users', only: [:create] do
     resource :password, controller: 'clearance/passwords', only: %i[create edit update]
     resources :posts, only: [:index]

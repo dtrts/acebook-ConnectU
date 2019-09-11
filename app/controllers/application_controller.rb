@@ -14,4 +14,11 @@ class ApplicationController < ActionController::Base
       redirect_to('/') # halts request cycle
     end
   end
+
+  def user_posts_url
+    return "/users/#{@user.id}/posts" if @user
+    return "/users/#{current_user.id}/posts" if current_user
+
+    '/'
+  end
 end

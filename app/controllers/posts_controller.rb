@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     else
       flash[:error] = "Cannot delete another user's posts, no matter how man mistakes they make."
     end
-    redirect_to "/users/#{current_user.id}/posts"
+    redirect_to user_posts_url
   end
 
   private
