@@ -25,9 +25,7 @@ class PostsController < ApplicationController
     if @post.user_id != current_user.id
       flash[:error] = 'Cannot update another user\'s posts, unfortunately.'
       redirect_to posts_url
-    end
-
-    if @post.created_at < Time.now - 10.minutes
+    elsif @post.created_at < Time.now - 10.minutes
       flash[:error] = 'It has been 10 minutes since post creation. Unable to edit'
       redirect_to posts_url
     end
