@@ -3,6 +3,7 @@
   <div class="post" id="post-<%= post.id %>">
     <p><%= post.message %></p>
     <p><small><%= post.created_at %></small></p>
+    <%= button_to "Delete post", post_path(post), method: :delete %>
   </div>
   <% end %>
 </div>
