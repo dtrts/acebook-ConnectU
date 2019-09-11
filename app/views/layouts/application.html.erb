@@ -23,11 +23,13 @@
     <% end %>
   </div>
   <div class='links'>
-
     <%= link_to posts_url do %>All Posts <% end %>
-
   </div>
-
+  <% if current_user %>
+  <div class='links'>
+    <%= link_to user_posts_path(current_user) do %>My Posts<% end %>
+  </div>
+  <% end %>
   <%= yield %>
 </body>
 
