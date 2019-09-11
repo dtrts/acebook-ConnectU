@@ -67,7 +67,7 @@ RSpec.describe PostsController, type: :controller do
       a_post = Post.find_by(message: 'Hello, world!')
       sign_out
       user = sign_in # makes a new user
-      post :destroy, params: { id: a_post.id }
+      delete(:destroy, params: { id: a_post.id })
       expect(Post.find(a_post.id)).to eq(a_post)
     end
 
@@ -76,7 +76,7 @@ RSpec.describe PostsController, type: :controller do
       post :create, params: { post: { message: 'Hello, world!' } }
       a_post = Post.find_by(message: 'Hello, world!')
 
-      post :destroy, params: { id: a_post.id }
+      delete(:destroy, params: { id: a_post.id })
       expect(Post.where(id: a_post.id).count).to eq(0)
     end
   end
