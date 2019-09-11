@@ -28,7 +28,7 @@ RSpec.describe PostsController, type: :controller do
     it 'creates a post with correct user_id' do
       user = sign_in
       post :create, params: { post: { message: 'Hello, world!1111' } }
-      a_post = Post.find_by(message: 'Hello, world!1111',user_id: user.id)
+      a_post = Post.find_by(message: 'Hello, world!1111', user_id: user.id)
       expect(a_post).to be
     end
   end
@@ -38,6 +38,28 @@ RSpec.describe PostsController, type: :controller do
       sign_in
       get :index
       expect(response).to have_http_status(200)
+    end
+  end
+
+  describe 'DELETE' do
+    it 'will not delete a post of a different user' do
+      user = sign_in
+      post :create, params: { post: { message: 'Hello, world!' } }
+      a_post = Post.find_by(message: 'Hello, world!')
+      sign_out
+
+      user = sign_in # makes a new user
+
+      post :destroy, params: { id: a_post.id }
+      expect(Post.find(a_post.id)).to eq(a_post)
+    end
+    it 'will delete its own post' do
+      user = sign_in
+      post :create, params: { post: { message: 'Hello, world!' } }
+      a_post = Post.find_by(message: 'Hello, world!')
+
+      post :destroy, params: { id: a_post.id }
+      expect(Post.where(id: a_post.id).count).to eq(0)
     end
   end
 end

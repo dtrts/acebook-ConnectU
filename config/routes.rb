@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, controller: 'users', only: [:create] do
     resource :password, controller: 'clearance/passwords', only: %i[create edit update]
     resources :posts, only: [:index]
+    # resources :posts, only: [:index], controller: 'user_posts' # example of a custom controller.
   end
 
   get '/sign_in' => 'clearance/sessions#new', as: 'sign_in'
