@@ -24,11 +24,11 @@
     </div>
   </div>
   <div style="white-space:pre-wrap; width:75%;float:left;"><%= post.message %></div>
+  <% if post.user_id == current_user.id-%>
   <%=button_to 'Delete Post', post_path(post), id: "delete", method: :delete %>
   <%= button_to edit_post_path(post), method: "get" do %>
   Edit Post
   <% end %>
-  <!-- <% if post.user_id == current_user.id-%> -->
-  <!-- <% end %> -->
+  <% end %>
 </div>
 <% end %>
