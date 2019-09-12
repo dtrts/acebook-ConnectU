@@ -25,6 +25,13 @@ RSpec.describe PostsController, type: :controller do
       post :create, params: { post: { message: 'Hello, world!' } }
       expect(Post.find_by(message: 'Hello, world!')).to be
     end
+
+    it 'updates a post' do
+      sign_in
+      post :create, params: { post: { message: 'Hello, world!' } }
+      put :update, params: { id: Post.first.id, post: { message: 'Hello, Dream world' } }
+      expect(Post.find_by(message: 'Hello, Dream world')).to be
+    end
     it 'creates a post with correct user_id' do
       user = sign_in
       post(:create, params: { post: { message: 'Hello, world!1111' } })
@@ -78,6 +85,12 @@ RSpec.describe PostsController, type: :controller do
 
       delete(:destroy, params: { id: a_post.id })
       expect(Post.where(id: a_post.id).count).to eq(0)
+    end
+    it 'deletes a post' do
+      sign_in
+      post :create, params: { post: { message: 'Hello, world!' } }
+      delete :destroy, params: { id: Post.first.id, post: { message: 'Hello, world!' } }
+      expect(Post.find_by(message: 'Hello, world!')).not_to be
     end
   end
 end
