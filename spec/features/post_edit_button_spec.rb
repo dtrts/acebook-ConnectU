@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.feature 'Edit post', type: :feature do
   scenario 'Can edit own post' do
-    sign_in
+    user = sign_in
     # user = current_user
-    visit '/posts/new'
+
+    visit "/users/#{user.id}/posts/new"
     fill_in :"post[message]", with: 'This is a message'
     click_button 'Submit'
     expect(page).to have_content('This is a message')
@@ -17,8 +18,9 @@ RSpec.feature 'Edit post', type: :feature do
   end
 
   scenario 'Cannot edit other user post' do
-    sign_in
-    visit '/posts/new'
+    user = sign_in
+    # user = User.all.order(created_at: :asc).last
+    visit "/users/#{user.id}/posts/new"
     fill_in :"post[message]", with: 'This is a message'
     click_button 'Submit'
     sign_out

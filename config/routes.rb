@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resource :session, controller: 'sessions', only: [:create]
   resources :users, controller: 'users', only: [:create] do
     resource :password, controller: 'clearance/passwords', only: %i[create edit update]
-    resources :posts, only: [:index]
+    resources :posts, shallow: true # only: [:index]
     # resources :posts, only: [:index], controller: 'user_posts' # example of a custom controller.
   end
 
@@ -15,7 +15,10 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :posts
+  # resources :posts do
+  #   get 'all'
+  # end
+  get '/posts', to: 'posts#all'
   # root 'posts#index'
 
   root 'application#index'

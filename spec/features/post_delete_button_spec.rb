@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.feature 'Delete post', type: :feature do
   scenario 'Can delete own post' do
-    sign_in
+    user = sign_in
     # user = current_user
-    visit '/posts/new'
+    visit "/users/#{user.id}/posts/new"
     fill_in :"post[message]", with: 'This is a message'
     click_button 'Submit'
     # visit "/users/#{user.id}/posts"
@@ -13,8 +13,8 @@ RSpec.feature 'Delete post', type: :feature do
   end
 
   scenario 'Cannot delete other user post' do
-    sign_in
-    visit '/posts/new'
+    user = sign_in
+    visit "/users/#{user.id}/posts/new"
     fill_in :"post[message]", with: 'This is a message'
     click_button 'Submit'
     sign_out

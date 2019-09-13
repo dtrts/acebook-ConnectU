@@ -30,7 +30,7 @@
     <%= link_to posts_url do %>All Posts <% end %>
     <% if current_user %>
     <%= link_to user_posts_path(current_user) do %>My Posts<% end %>
-    <%= link_to new_post_path do %> New Post <% end %>
+    <%= link_to new_user_post_path(current_user) do %> New Post <% end %>
   </div>
 
   <% end %>

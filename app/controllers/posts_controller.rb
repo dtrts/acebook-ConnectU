@@ -1,4 +1,11 @@
 class PostsController < ApplicationController
+  def all
+    @posts = params[:user_id] ? Post.where(user_id: params[:user_id]) : Post.all
+    @posts.order!(created_at: :desc)
+    @user = current_user
+    render 'index'
+  end
+
   def index
     @posts = params[:user_id] ? Post.where(user_id: params[:user_id]) : Post.all
     @posts.order!(created_at: :desc)
