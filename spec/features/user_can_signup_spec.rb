@@ -44,4 +44,17 @@ RSpec.feature 'Log in/out', type: :feature do
     click_button 'Sign out'
     expect(page).to have_content('Sign in')
   end
+
+  scenario 'Can Sign in from index page' do
+    visit '/sign_up'
+    fill_in 'user_email', with: 'test@test.com'
+    fill_in 'user_password', with: 'password'
+    click_button 'Sign up'
+    sign_out
+    visit '/'
+    fill_in :"session[email]", with: 'test@test.com'
+    fill_in :"session[password]", with: 'password'
+    click_button 'Sign in'
+    expect(page).to have_button('Sign out')
+  end
 end
