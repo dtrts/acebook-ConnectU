@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.feature 'The number of characters in a post is limited', type: :feature do
@@ -8,9 +10,8 @@ RSpec.feature 'The number of characters in a post is limited', type: :feature do
     click_on 'New Post'
     fill_in 'post_message', with: ('My' * 2001)
     click_button 'Submit'
-  
 
-     expect(page).to have_content('Your post is too long.')
+    expect(page).to have_content('Your post is too long.')
   end
 
   scenario 'A user cannot update a post to length of > 4000 characters' do
@@ -24,8 +25,6 @@ RSpec.feature 'The number of characters in a post is limited', type: :feature do
     click_button 'Submit'
     expect(page).to have_content('Your post is too long.')
 
-
-
-     expect(page).to have_content('Your post is too long.')
+    expect(page).to have_content('Your post is too long.')
   end
 end
