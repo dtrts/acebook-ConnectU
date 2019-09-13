@@ -20,8 +20,8 @@ RSpec.feature 'Delete post', type: :feature do
     sign_out
     sign_in
     visit '/posts'
-    click_button 'Delete Post'
-    expect(page).to have_content("Cannot delete another user's posts")
-    # expect(page).not_to have_button('Delete Post')
+    # click_button 'Delete Post'
+    # expect(page).to have_content("Cannot delete another user's posts")
+    expect(page).not_to have_button('Delete Post')
   end
 end

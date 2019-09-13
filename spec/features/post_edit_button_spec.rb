@@ -24,8 +24,8 @@ RSpec.feature 'Edit post', type: :feature do
     sign_out
     sign_in
     visit '/posts'
-    click_button 'Edit Post'
-    expect(page).to have_content("Cannot update another user's posts")
-    # expect(page).not_to have_button('Edit Post')
+    expect(page).not_to have_button('Edit Post')
+    # click_button 'Edit Post'
+    # expect(page).to have_content("Cannot update another user's posts")
   end
 end
