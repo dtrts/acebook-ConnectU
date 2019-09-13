@@ -14,4 +14,51 @@
  *= require_self
  */
 
- 
+* {
+  box-sizing: border-box
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+
+}
+
+header {
+  background-color: rgb(181, 216, 68);
+  display: flex;
+  padding: 20px;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.user-interaction {
+  display: flex;
+
+  padding: 20px;
+  flex-direction: row;
+  justify-content: left;
+  max-width: 800px;
+  margin: auto;
+}
+
+.links {
+  display: flex;
+  padding: 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 800px;
+  margin: auto;
+}
+
+
+.title {
+  font-size: 150%;
+}
+
+.flash {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}

@@ -3,10 +3,14 @@
 
 <head>
   <%= csrf_meta_tag %>
+  <%= stylesheet_link_tag "application" %>
 </head>
 
 <body>
-  <div id="header">
+  <header>
+    <span class="title">Connect U</span>
+  </header>
+  <div class="user-interaction">
     <% if signed_in? -%>
     Hello <%= current_user.email %>
     <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
@@ -16,18 +20,19 @@
     <% end -%>
   </div>
 
-  <div id="flash">
+  <div class="flash">
     <% flash.each do |key, value| -%>
     <div id="flash_<%= key %>"><%=h value %></div>
     <% end %>
   </div>
+
   <div class='links'>
     <%= link_to posts_url do %>All Posts <% end %>
-  </div>
-  <% if current_user %>
-  <div class='links'>
+    <% if current_user %>
     <%= link_to user_posts_path(current_user) do %>My Posts<% end %>
+    <%= link_to new_post_path do %> New Post <% end %>
   </div>
+
   <% end %>
   <%= yield %>
 </body>
