@@ -10,6 +10,7 @@ module Features
       password = "password"
       user = FactoryBot.create(:user, password: password)
       sign_in_with user.email, password
+      user
     end
 
     def sign_in_with(email, password)

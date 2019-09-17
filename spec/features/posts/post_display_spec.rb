@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe 'Post Index' do
-  before do
+  before(:each) do
     travel_to Time.local(1994)
   end
 
-  after do
+  after(:each) do
     travel_back
   end
 
