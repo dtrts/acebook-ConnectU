@@ -1,8 +1,8 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV['RAILS_ENV'] ||= 'test'
+ENV["RAILS_ENV"] ||= "test"
 # Requiring simplecov and using rails setup suggested by 'Getting Started' guide.
-require 'simplecov'
-require 'simplecov-console'
+require "simplecov"
+require "simplecov-console"
 SimpleCov.formatter = SimpleCov.formatter = SimpleCov::Formatter::Console
 SimpleCov.start #'rails'
 
@@ -10,13 +10,13 @@ SimpleCov.start #'rails'
 # SimpleCov.start 'rails'
 # SimpleCov.formatter = SimpleCov::Formatter::Console
 
-require File.expand_path('../config/environment', __dir__)
+require File.expand_path("../config/environment", __dir__)
 # Prevent database truncation if the environment is production
-abort('The Rails environment is running in production mode!') if Rails.env.production?
-require 'spec_helper'
-require 'rspec/rails'
-require 'clearance/rspec'
-require 'interaction_helper'
+abort("The Rails environment is running in production mode!") if Rails.env.production?
+require "spec_helper"
+require "rspec/rails"
+require "clearance/rspec"
+require "interaction_helper"
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
