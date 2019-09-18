@@ -19,8 +19,18 @@ class PostsController < ApplicationController
     @posts = Post.where(to_user_id: nil).order('created_at DESC')
   end
 
+  def edit
+    @post = Post.find(params[:id])
+
+    if Time.now - @post.created_at > 600
+      flash[:error] = 'You can\'t edit your post after 10 mins foooool, gotta delete it mate'
+      redirect_to(posts_url) && return
+    end
+  end
+
   def update
     @post = Post.find(params[:id])
+
     if Time.now - @post.created_at > 600
       flash[:error] = 'Cannot update post, time limit passed!'
       redirect_to(posts_path) && return
@@ -37,14 +47,7 @@ class PostsController < ApplicationController
     redirect_to(posts_url)
   end
 
-  def edit
-    @post = Post.find(params[:id])
 
-    if Time.now - @post.created_at > 600
-      flash[:error] = 'You can\'t edit your post after 10 mins foooool, gotta delete it mate'
-      redirect_to(posts_url) && return
-    end
-  end
 
   def destroy
     @post = Post.find(params[:id])

@@ -11,7 +11,6 @@ end
 def edit_post(message, post_id)
   visit('/posts')
   within("#post-#{post_id}") do
-    fill_in('comment[body]', with: body)
     click_button('Edit Post')
   end
   fill_in('post[message]', with: message)

@@ -4,6 +4,18 @@ RSpec.feature 'Timeline', type: :feature do
   after(:each) do
     travel_back
   end
+  scenario 'A user cannot input a really long post' do
+    sign_in
+    create_post('My' * 2001)
+    expect(page).to have_content('Your post is too long.')
+  end
+
+  scenario 'A user cannot update a post to length of > 4000 characters' do
+    sign_in
+    post = create_post('My')
+    edit_post('My' * 2001, post.id)
+    expect(page).to have_content('Your post is too long.')
+  end
 
   scenario 'Can edit posts and view them' do
     # TODO: add login helper method
@@ -33,6 +45,21 @@ RSpec.feature 'Timeline', type: :feature do
     expect(find("#post-#{post2.id}")).to have_button('Edit Post')
     expect(find("#post-#{post1.id}")).not_to have_button('Edit Post')
   end
+
+  scenario 'User cannot edit another users posts' do
+    user1 = sign_in
+    post1 = create_post('User 1s post')
+    sign_out
+    user2 = sign_in
+    visit("/posts/#{post1.id}/edit")
+    fill_in('post[message]', with: 'Trying to edit post')
+    click_button('Submit')
+    expect(page).to have_content('You do not own this post.')
+    expect(page).to have_content('User 1s post')
+  end
+
+  pending 'cannot click submit on /posts/id/edit after ten mins'
+  pending 'cannot make wall posts that are to long'
 
   scenario 'A user cannot edit other peoples posts' do
     sign_in
