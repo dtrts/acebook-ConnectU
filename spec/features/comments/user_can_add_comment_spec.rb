@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.feature 'Timeline', type: :feature do
   scenario 'Can edit posts and view them' do
-    # TODO: add login helper method
     sign_in
     post = create_post('This is a post')
     create_comment('This is a comment', post.id)
