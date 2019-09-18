@@ -1,38 +1,37 @@
 require 'rails_helper'
 
 RSpec.feature 'Timeline', type: :feature do
+  after(:each) do
+    travel_back
+  end
+
   scenario 'Can edit posts and view them' do
     # TODO: add login helper method
     sign_in
-    create_post('Hello, world!')
-    visit('/posts')
-    click_button 'Edit Post'
-    fill_in 'post[message]', with: 'Hello, Dream world!'
-    click_button 'Submit'
+    post = create_post('Hello, world!')
+    edit_post('Hello, Dream world!', post.id)
     expect(page).to have_content('Hello, Dream world!')
   end
-  scenario "Can't edit post after 10 mins" do
-    travel_to Time.local(1994)
+
+  scenario 'Edit Post button redirects after 10 mins' do
+    travel_to(Time.local(1994))
     sign_in
-    visit '/posts'
-    click_button '+'
-    fill_in 'post[message]', with: 'Hello, world!'
-    click_button 'Submit'
-    travel_to Time.local(1994) + 601
-    click_button 'Edit Post'
-    fill_in 'post[message]', with: 'Hello, Dream world!'
-    click_button 'Submit'
-    expect(page).to have_content("You can't edit your post after 10 mins foooool, gotta delete it mate")
+    post = create_post('Hello, world!')
+    travel_to(Time.local(1994) + 601)
+    click_button('Edit Post')
+    expect(page).to have_content('You can\'t edit your post after 10 mins foooool, gotta delete it mate')
   end
+
   scenario "User can't see edit post button after 10 mins" do
     travel_to Time.local(1994)
     sign_in
-    visit '/posts'
-    click_button '+'
-    fill_in 'post[message]', with: 'Hello, world!'
-    click_button 'Submit'
+    post1 = create_post('Hello, world!')
     travel_to Time.local(1994) + 601
-    expect(page).not_to have_selector('Edit Post')
+    post2 = create_post('Hello, world again!')
+    visit('/posts')
+
+    expect(find("#post-#{post2.id}")).to have_button('Edit Post')
+    expect(find("#post-#{post1.id}")).not_to have_button('Edit Post')
   end
 
   scenario 'A user cannot edit other peoples posts' do

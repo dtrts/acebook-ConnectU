@@ -20,29 +20,30 @@ class PostsController < ApplicationController
   end
 
   def update
-    if post_params[:message].length > 4000
-      flash[:error] = 'Your post is too long.'
-      redirect_to(edit_post_path) && return
-    end
     @post = Post.find(params[:id])
     if Time.now - @post.created_at > 600
       flash[:error] = 'Cannot update post, time limit passed!'
-    elsif @post.user_id == current_user.id # checks if user owns post
-      @post.update(post_params)
-      # updates and changes the post
+      redirect_to(posts_path) && return
+    elsif post_params[:message].length > 4000
+      flash[:error] = 'Your post is too long.'
+      redirect_to(edit_post_path) && return
+    elsif @post.user_id != current_user.id # checks if user owns post
+      flash[:error] = 'You do not own this post.'
+      redirect_to(posts_path) && return
     end
 
-    if Time.now - @post.created_at > 600
-      flash[:error] = "You can't edit your post after 10 mins foooool, gotta delete it mate"
-    else
-      flash[:error] = 'Post updated!'
-      # redirects and produces flash error
-    end
-    redirect_to posts_url
+    flash[:message] = 'Post updated!'
+    @post.update(post_params)
+    redirect_to(posts_url)
   end
 
   def edit
     @post = Post.find(params[:id])
+
+    if Time.now - @post.created_at > 600
+      flash[:error] = 'You can\'t edit your post after 10 mins foooool, gotta delete it mate'
+      redirect_to(posts_url) && return
+    end
   end
 
   def destroy
@@ -52,6 +53,7 @@ class PostsController < ApplicationController
       redirect_to posts_url
     else
       @post.destroy
+      flash[:message] = 'All right then ,keep your secrets. Post deleted.'
       redirect_to posts_url
     end
   end
