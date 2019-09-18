@@ -71,7 +71,7 @@ RSpec.feature "Timeline", type: :feature do
     visit "/sign_up"
     fill_in "user_email", with: "test@test.com"
     fill_in "user_password", with: "password"
-    fill_in "username", with: "password"
+    fill_in "user_username", with: "password"
     click_button "Sign up"
     visit "/posts"
     expect(page).to have_no_button("Edit Post")
