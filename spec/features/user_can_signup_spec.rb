@@ -31,4 +31,13 @@ RSpec.feature 'Log in/out and Sign Up', type: :feature do
     expect(page).to have_content('You must enter a username to signup!')
   end
 
+ scenario "User cannot signup with the already taken username" do
+  sign_up_with('test@test.com', 'password', 'username')
+  visit(sign_up_path)
+    fill_in("user_email", with: "test@test.com")
+    fill_in("user_password", with: "password")
+    fill_in("user_username", with: "username")
+  expect(page).to have_content('Username already taken!')
+ end
+
 end

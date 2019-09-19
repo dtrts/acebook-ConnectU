@@ -7,6 +7,7 @@ class UsersController < Clearance::UsersController
       flash[:message] = 'You must enter a username to signup!'
       redirect_to sign_up_path and return
     end
+    
     if @user.save
       sign_in @user
       flash[:message] = 'A helpful message to say you\'ve been signed in!'
