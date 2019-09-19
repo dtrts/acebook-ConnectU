@@ -9,6 +9,8 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 
   received: (data) ->
     $('#messages').append data['message']
+    messages_div = document.getElementById("messages");
+    messages_div.scrollTop = messages_div.scrollHeight;
 
   speak: (message) ->
     @perform 'speak', message: message
@@ -18,3 +20,4 @@ $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
         App.room.speak event.target.value
         event.target.value = ''
         event.preventDefault()
+

@@ -1,3 +1,5 @@
-<div class="message">
-  <p><%= message.content %></p>
+<div class="message" id="message-<%= message.id %>">
+
+  <p><span class="message-user-name"> <%= message.user.email %>:</span>
+    <%= message.content %><br><small><%=message.created_at%></small><br></p>
 </div>

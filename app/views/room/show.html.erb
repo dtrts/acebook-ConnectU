@@ -1,9 +1,15 @@
-<h1>Chat Room</h1>
-<div id="messages">
-  <%= render @messages %>
-</div>
+<div id="chat-room">
 
-<form>
-  <label>Say Something:</label><br>
-  <input id="chat-input" type="text" data-behavior="room_speaker">
-</form>
+  <h1>Chat Room</h1>
+
+  <div id="messages">
+    <%= render @messages %>
+  </div>
+
+  <form>
+    <label>Say Something:</label><br>
+    <input id="chat-input" type="text" data-behavior="room_speaker">
+  </form>
+
+  <%= stylesheet_link_tag "room"%>
+</div>
