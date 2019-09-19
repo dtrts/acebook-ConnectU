@@ -102,7 +102,8 @@ textarea {
     width:85%;
     float:left; 
     word-wrap: break-word; 
-    overflow: hidden;
+    overflow: scroll;
+    height: 100%;
 }
 
 #delete {
@@ -160,4 +161,61 @@ textarea {
     margin-left: 5%;
     border-radius: 10px;
     padding: 0 auto;
+}
+
+#name {
+    background: none;
+    border: none;
+    font-size: 1em; 
+    color: #3b5999; 
+    font-weight: bold;
+}
+
+#comment-user-name {
+    float: left;
+}
+
+#comment-profile-picture-container {
+    height: 20px; 
+    width: 20px; 
+    float: left;
+}
+
+#comment-profile-picture {
+    background-color: black; 
+    border-radius: 20px; 
+    height: 20px; 
+    width: 20px; 
+    float: left;
+}
+
+#comment-name {
+    background: none;
+    border: none;
+    font-size: 0.8em; 
+    color: #3b5999; 
+    font-weight: bold;
+    margin-left: 0;
+}
+
+#rule-container {
+    width: 80%;
+    margin-left: 10%;
+}
+
+#comment-submit {
+    margin-left: 35%;
+    margin-top: 20px;
+}
+
+#comment-body-text {
+    white-space:pre-wrap; 
+    text-align: left;
+    word-wrap: break-word;
+    overflow: scroll;
+    margin: 0 auto;
+}
+
+#comment-body-container {
+    white-space: pre-line;
 }

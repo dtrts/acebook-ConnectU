@@ -1,4 +1,3 @@
-
 <%= stylesheet_link_tag "posts" %>
 
 <div class="new-post-container">
@@ -11,7 +10,6 @@
     </div>
     <% end %>
 </div>
-
 
   <% @posts.each do |post| %>
 
@@ -48,28 +46,19 @@
     <hr>
     <div id="comment-container" >
         <% post.comments.each do |comment| %>
-          <div id="comment-profile-picture-container">
-            <div id="comment-profile-picture"></div>
-          </div>
-          <div id="comment-user-name">
-          <%= button_to comment.user.email, profile_path(comment.user.id), method: "get", id: "comment-name"%>
-          </div>
-          <div id="comment-body-container">
-
+          <div>
+            <strong><%= comment.user.email %></strong>
             <%= comment.body %>
-          </div>
-          <div id="rule-container">
-            <hr>
           </div>
           <% end %>
 
           <%= form_with(model: [ post, Comment.new ], local: true) do |form| %>
-            <div id="new-comment-area">
+            <p>
               <%= form.text_area :body, id: "comment-text-area" %>
-            </div>
-            <div>
-              <%= form.submit id: "comment-submit" %>
-            </div>
+            </p>
+            <p>
+              <%= form.submit %>
+            </p>
           <% end %>
       </div>
   </div>

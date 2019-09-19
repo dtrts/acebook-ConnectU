@@ -28,7 +28,7 @@
       </div>
       <div id="page-name-container">
         <% if signed_in? -%>
-          <%= button_to profile_index_url, method: "get", id: "page-name" do %>
+          <%= button_to profile_path(current_user.id), method: "get", id: "page-name" do %>
             <%= current_user.email %>
           <%  end %>
         <% end %>

@@ -6,13 +6,12 @@ RSpec.feature "Profile", type: :feature do
     visit "/profile"
     expect(page).to have_content("Welcome to ConnectU")
   end
-  scenario "User can add post and view it on their profile" do
+  pending scenario "User can add post and view it on their profile" do
     sign_in
     visit "/profile"
     click_on "+"
     fill_in "post_message", with: "My new post"
     click_on "Submit"
-    visit "/profile"
     expect(page).to have_content("My new post")
   end
 end
