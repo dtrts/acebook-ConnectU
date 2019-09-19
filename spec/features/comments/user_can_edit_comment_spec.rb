@@ -16,11 +16,9 @@ RSpec.feature "Timeline", type: :feature do
     travel_to Time.local(1994)
     sign_in
     create_comment('This is a comment')
-
     click_button "Edit Comment"
     travel_to Time.local(1994) + 610
     click_button "Update Comment"
-
     expect(page).to have_content("You can't edit your comment after 10 mins foooool, gotta delete it mate")
   end
 

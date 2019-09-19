@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.feature 'Timeline', type: :feature do
   scenario 'Can edit posts and view them' do
-    # TODO: add login helper method
     sign_in
     create_comment('This is a comment')
     expect(page).to have_content('This is a comment')
@@ -16,7 +15,6 @@ RSpec.feature 'Timeline', type: :feature do
     create_comment('This is a comment')
     expect(page).to have_content('test@test.com')
   end
-
 
   scenario "A user sees a message to let them know the comment was posted successfully" do
     visit "/sign_up"
