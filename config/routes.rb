@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'room/show'
+  mount ActionCable.server => '/cable'
+
   # resources :users, controller: 'users', only: [:create]
 
   resources :passwords, controller: 'clearance/passwords', only: %i[create new]

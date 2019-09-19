@@ -1,0 +1,161 @@
+/* line 5, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+body {
+  background-color: #eeeff4;
+  margin: 0 auto;
+}
+
+/* line 10, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+.new-post-container {
+  width: 26%;
+  margin-left: 33.5%;
+  height: 100px;
+  margin-top: 30px;
+}
+
+/* line 17, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+textarea {
+  outline: none;
+  resize: none;
+  width: 80%;
+  height: 60px;
+  font-size: 1em;
+  border: none;
+  font-weight: lighter;
+  float: left;
+}
+
+/* line 28, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#post-submit {
+  height: 64px;
+  background-color: white;
+  color: lightgrey;
+  border: none;
+  margin-bottom: 25px;
+  width: 19%;
+  float: left;
+  border-left: 1px lightgray solid;
+  outline: none;
+}
+
+/* line 40, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+::placeholder {
+  color: lightgrey;
+}
+
+/* line 44, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#post-container {
+  height: 300px;
+  width: 25%;
+  margin-left: 33.5%;
+  background-color: white;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  padding: 10px 10px;
+}
+
+/* line 54, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#post-header-container {
+  height: 30px;
+  width: 100%;
+}
+
+/* line 59, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#post-profile-picture-container {
+  height: 100%;
+  width: 30px;
+  float: left;
+}
+
+/* line 65, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#post-profile-picture {
+  background-color: black;
+  border-radius: 30px;
+  height: 100%;
+  width: 30px;
+  float: left;
+}
+
+/* line 73, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#post-details-container {
+  height: 100%;
+  width: 50%;
+  float: left;
+}
+
+/* line 79, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#post-user-email {
+  font-size: 1em;
+  margin-left: 10px;
+  color: #3b5999;
+  font-weight: bold;
+}
+
+/* line 86, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#post-created-at {
+  width: 100%;
+  color: grey;
+  font-size: 0.7em;
+  margin-left: 12px;
+}
+
+/* line 93, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#post-message-container {
+  padding-top: 10px;
+  height: 30%;
+  width: 100%;
+}
+
+/* line 99, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#post-message {
+  white-space: pre-wrap;
+  width: 85%;
+  float: left;
+  height: 100px;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+/* line 108, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#delete {
+  background-color: transparent;
+  display: inline-block;
+  cursor: pointer;
+  color: #3b5999;
+  font-family: Arial;
+  font-size: 0.6em;
+  text-decoration: none;
+}
+
+/* line 118, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#edit {
+  background-color: transparent;
+  display: inline-block;
+  cursor: pointer;
+  color: #3b5999;
+  font-family: Arial;
+  font-size: 0.6em;
+  text-decoration: none;
+}
+
+/* line 128, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#post-options-container {
+  width: 25%;
+  float: right;
+}
+
+/* line 133, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#post-delete-button-container {
+  margin-left: 30%;
+  width: 50%;
+}
+
+/* line 138, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#post-edit-button-container {
+  margin-left: 30%;
+  width: 50%;
+}
+
+/* line 143, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/profile.scss */
+#comment-container {
+  background: white;
+}

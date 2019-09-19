@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :require_login
   protect_from_forgery with: :exception
 
+  # ActionCable.server.config.allowed_request_origins = ['http://ruby.app:3000']
+
   def index; end
 
   private
