@@ -29,5 +29,6 @@ RSpec.feature 'Timeline', type: :feature do
     create_comment('This is a comment', post.id)
 
     expect(page).to have_content('Your comment was posted successfully')
+
   end
 end
