@@ -2,7 +2,14 @@
 ENV['RAILS_ENV'] ||= 'test'
 # Requiring simplecov and using rails setup suggested by 'Getting Started' guide.
 require 'simplecov'
-SimpleCov.start 'rails'
+require 'simplecov-console'
+SimpleCov.formatter = SimpleCov.formatter = SimpleCov::Formatter::Console
+SimpleCov.start #'rails'
+
+# require 'simplecov-console'
+# SimpleCov.start 'rails'
+# SimpleCov.formatter = SimpleCov::Formatter::Console
+
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?

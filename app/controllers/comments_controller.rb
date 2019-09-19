@@ -9,13 +9,6 @@ class CommentsController < ApplicationController
     redirect_to posts_url
   end
 
-  def index
-    @user = User.find(@comment.user_id)
-    @comment_owner = User.find(@comment.user_id)
-
-    @email = @comment_owner.email
-  end
-
   def edit
     @comment = Comment.find(params[:id])
   end
@@ -46,7 +39,7 @@ class CommentsController < ApplicationController
       redirect_to posts_url
     else
       @comment.destroy
-      flash[:error] = 'Delete successful'
+      flash[:message] = 'Delete successful'
       redirect_to posts_url
     end
   end

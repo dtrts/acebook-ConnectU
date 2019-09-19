@@ -45,6 +45,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.5'
   gem 'simplecov', require: false, group: :test
+  gem "simplecov-console", "~> 0.5.0", require: false
 end
 
 group :development do
@@ -57,3 +58,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "factory_bot_rails", "~> 5.0"
+
