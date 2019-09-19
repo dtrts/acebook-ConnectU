@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Log in/out and Sign Up', type: :feature do
   scenario 'helpful message on sign up ' do
-    sign_up_with('test@test.com', 'password')
+    sign_up_with('test@test.com', 'password', 'username')
     expect(page).to have_content('A helpful message to say you\'ve been signed in!')
   end
 
@@ -13,7 +13,7 @@ RSpec.feature 'Log in/out and Sign Up', type: :feature do
   end
 
   scenario 'Can Log In When Already Signed Up' do
-    user = sign_up_with('test@test.com', 'password')
+    user = sign_up_with('test@test.com', 'password', 'username')
     sign_out
     sign_in_with('test@test.com', 'password')
     expect(page).to have_content(user.email)
@@ -25,4 +25,10 @@ RSpec.feature 'Log in/out and Sign Up', type: :feature do
     click_button 'Reset password'
     expect(page).to have_content('changing your password.')
   end
+
+  scenario "User can't sign up without supplying username" do
+    sign_up_with('test@test.com','password', "")
+    expect(page).to have_content('You must enter a username to signup!')
+  end
+
 end
