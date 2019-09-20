@@ -98,10 +98,10 @@ textarea {
 }
 
 #post-message {
-    white-space:pre-wrap; 
+    white-space:pre-wrap;
     width:85%;
-    float:left; 
-    word-wrap: break-word; 
+    float:left;
+    word-wrap: break-word;
     overflow: scroll;
     height: 100%;
 }
@@ -156,7 +156,7 @@ textarea {
     height: 5%;
     font-size:0.8em;
     border: none;
-    font-weight: lighter; 
+    font-weight: lighter;
     background-color: #eeeff4;
     margin-left: 5%;
     border-radius: 10px;
@@ -166,8 +166,8 @@ textarea {
 #name {
     background: none;
     border: none;
-    font-size: 1em; 
-    color: #3b5999; 
+    font-size: 1em;
+    color: #3b5999;
     font-weight: bold;
 }
 
@@ -176,24 +176,24 @@ textarea {
 }
 
 #comment-profile-picture-container {
-    height: 20px; 
-    width: 20px; 
+    height: 20px;
+    width: 20px;
     float: left;
 }
 
 #comment-profile-picture {
-    background-color: black; 
-    border-radius: 20px; 
-    height: 20px; 
-    width: 20px; 
+    background-color: black;
+    border-radius: 20px;
+    height: 20px;
+    width: 20px;
     float: left;
 }
 
 #comment-name {
     background: none;
     border: none;
-    font-size: 0.8em; 
-    color: #3b5999; 
+    font-size: 0.8em;
+    color: #3b5999;
     font-weight: bold;
     margin-left: 0;
 }
@@ -209,7 +209,7 @@ textarea {
 }
 
 #comment-body-text {
-    white-space:pre-wrap; 
+    white-space:pre-wrap;
     text-align: left;
     word-wrap: break-word;
     overflow: scroll;
