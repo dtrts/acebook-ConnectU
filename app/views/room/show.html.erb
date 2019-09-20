@@ -1,7 +1,9 @@
 <div id="chat-room">
 
   <h1>Chat Room</h1>
+  <div id="connected-users">
 
+  </div>
   <div id="messages">
     <%= render @messages %>
   </div>
@@ -12,4 +14,5 @@
   </form>
 
   <%= stylesheet_link_tag "room"%>
+  <%= javascript_include_tag "application" %>
 </div>
