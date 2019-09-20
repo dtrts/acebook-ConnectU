@@ -2,12 +2,18 @@ class UsersController < Clearance::UsersController
   def create
     # completely overwriting it
     @user = user_from_params
-    p @user.username
+
+    #   p User.find(params[:username])
     if @user.username == ""
-      flash[:message] = 'You must enter a username to signup!'
+      flash[:message] = "You must enter a username to signup!"
       redirect_to sign_up_path and return
     end
-    
+
+    if User.find_by(username: @user.username)
+      flash[:message] = "Username already taken!"
+      redirect_to sign_up_path and return
+    end
+
     if @user.save
       sign_in @user
       flash[:message] = 'A helpful message to say you\'ve been signed in!'
