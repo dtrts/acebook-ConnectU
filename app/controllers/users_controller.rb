@@ -3,6 +3,22 @@ class UsersController < Clearance::UsersController
     # completely overwriting it
     @user = user_from_params
 
+    #   p User.find(params[:username])
+    if @user.username == ""
+      flash[:message] = "You must enter a username to signup!"
+      redirect_to sign_up_path and return
+    end
+
+    if User.find_by(username: @user.username)
+      flash[:message] = "Username already taken!"
+      redirect_to sign_up_path and return
+    end
+
+    if @user.username.index(/[^a-z0-9A-Z]/)
+      flash[:error] = "Your username can only include alphabetical characters and numbers :("
+      redirect_to sign_up_path and return
+    end
+
     if @user.save
       sign_in @user
       flash[:message] = 'A helpful message to say you\'ve been signed in!'
@@ -15,19 +31,37 @@ class UsersController < Clearance::UsersController
 
   # protected
   def url_after_create
-    '/profile'
+    "/profile"
   end
 
   def show
     unless User.exists?(params[:id])
-      flash[:error] = 'That user does not exist'
+      flash[:error] = "That user does not exist"
       redirect_to posts_url
       # redirect_back && return
     end
 
     @posts = Post.where(
       "(user_id = '#{params[:id]}' and to_user_id is null) or to_user_id = '#{params[:id]}'"
-    ).order('created_at DESC')
+    ).order("created_at DESC")
     @wall_post = Post.new
+  end
+
+  private
+
+  def user_from_params
+    email = user_params.delete(:email)
+    password = user_params.delete(:password)
+    username = user_params.delete(:username)
+
+    Clearance.configuration.user_model.new(user_params).tap do |user|
+      user.email = email
+      user.password = password
+      user.username = username
+    end
+  end
+
+  def user_params
+    params[Clearance.configuration.user_parameter] || Hash.new
   end
 end
