@@ -12,6 +12,7 @@ body {
   margin-left: 33.5%;
   height: 100px;
   margin-top: 30px;
+  margin-bottom: 100px;
 }
 
 textarea {
@@ -25,14 +26,14 @@ textarea {
   float: left;
 }
 
-#post-submit {
+post-submit {
   height: 64px;
   background-color: white;
   color: lightgrey;
   border: none;
   margin-bottom: 25px;
   width: 19%;
-  float: left;
+  float: right;
   border-left: 1px lightgray solid;
   outline: none;
 }
@@ -55,6 +56,7 @@ textarea {
 #post-header-container {
   height: 30px;
   width: 100%;
+  margin-bottom: 100px;
 }
 
 #post-profile-picture-container {
@@ -92,18 +94,21 @@ textarea {
 }
 
 #post-message-container {
-  padding-top: 10px;
+  padding-top: 50px;
   height: 40%;
   width: 100%;
+  padding-bottom: 200px;
+
 }
 
-#post-message {
+post-message {
     white-space:pre-wrap;
     width:85%;
     float:left;
     word-wrap: break-word;
-    overflow: scroll;
     height: 100%;
+
+    margin-top: 100px;
 }
 
 #delete {
@@ -206,6 +211,7 @@ textarea {
 #comment-submit {
     margin-left: 35%;
     margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 #comment-body-text {
