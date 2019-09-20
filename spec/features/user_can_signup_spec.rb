@@ -41,4 +41,13 @@ RSpec.feature "Log in/out and Sign Up", type: :feature do
     click_button "Sign up"
     expect(page).to have_content("Username already taken!")
   end
+
+  scenario "User cannot sign up with a username that isn't alphanumeric" do
+    visit(sign_up_path)
+    fill_in("user_email", with: "test1@test.com")
+    fill_in("user_password", with: "password")
+    fill_in("user_username", with: "username!!!!")
+    click_button "Sign up"
+    expect(page).to have_content("Your username can only include alphabetical characters and numbers :(")
+  end
 end
