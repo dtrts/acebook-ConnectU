@@ -38,7 +38,7 @@
     <div id="page-name-container">
       <% if signed_in? -%>
       <%= button_to profile_index_url, method: "get", id: "page-name" do %>
-      <%= current_user.email %>
+      <%= current_user.username.capitalize %>
       <%  end %>
       <% end %>
     </div>
