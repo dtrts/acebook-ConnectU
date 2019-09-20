@@ -19,6 +19,7 @@ class UsersController < Clearance::UsersController
   end
 
   def show
+      @post = Post.new
       @posts = Post.where(:user_id => params[:user_id]).order("created_at DESC")
   end
 end
