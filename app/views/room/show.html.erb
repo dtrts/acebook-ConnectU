@@ -1,0 +1,18 @@
+<div id="chat-room">
+
+  <h1>Chat Room</h1>
+  <div id="connected-users">
+
+  </div>
+  <div id="messages">
+    <%= render @messages %>
+  </div>
+
+  <form>
+    <label>Say Something:</label><br>
+    <input id="chat-input" type="text" data-behavior="room_speaker">
+  </form>
+
+  <%= stylesheet_link_tag "room"%>
+  <%= javascript_include_tag "application" %>
+</div>

@@ -2,9 +2,11 @@
 <html>
 
 <head>
-  <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag "application"%>
   <%= csrf_meta_tag %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
 </head>
+
 
 <body>
   <div id="page-header">
@@ -16,6 +18,11 @@
     <div>
       <%= button_to posts_url, method: "get", id: "view-feed-button" do %>
       [=]
+      <% end %>
+    </div>
+    <div>
+      <%= button_to room_show_url, method: "get", id: "chat-room-button" do %>
+      [chat]
       <% end %>
     </div>
     <div id="sign-in-out-button-handler">
@@ -44,6 +51,7 @@
   </div>
 
   <%= yield %>
+
 </body>
 
 </html>

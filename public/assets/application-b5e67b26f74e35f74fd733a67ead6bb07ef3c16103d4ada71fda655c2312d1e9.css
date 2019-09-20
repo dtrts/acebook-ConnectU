@@ -1,12 +1,10 @@
-// Place all the styles related to the Profile controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
+/* line 5, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/application.scss */
 body {
   background-color: #eeeff4;
   margin: 0 auto;
 }
 
+/* line 10, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/application.scss */
 #sign-out-button {
   background-color: transparent;
   border: none;
@@ -17,6 +15,7 @@ body {
   height: 40px;
 }
 
+/* line 20, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/application.scss */
 #sign-in-button {
   background-color: transparent;
   border: none;
@@ -27,6 +26,7 @@ body {
   height: 40px;
 }
 
+/* line 30, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/application.scss */
 #new-post-button {
   background-color: transparent;
   border: none;
@@ -39,8 +39,7 @@ body {
   width: 40px;
 }
 
-
-
+/* line 42, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/application.scss */
 #view-feed-button {
   background-color: transparent;
   border: none;
@@ -53,18 +52,7 @@ body {
   margin-top: -2px;
 }
 
-#chat-room-button {
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-size: 2em;
-  float: left;
-  outline: none;
-  height: 40px;
-  margin-top: -2px;
-  width: 40px;
-}
-
+/* line 54, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/application.scss */
 #page-header {
   background-color: #3b5999;
   height: 40px;
@@ -75,6 +63,7 @@ body {
   flex-direction: row;
 }
 
+/* line 64, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/application.scss */
 #page-name-container {
   height: 100%;
   font-size: 1em;
@@ -82,6 +71,7 @@ body {
   float: left;
 }
 
+/* line 71, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/application.scss */
 #page-title {
   height: 100%;
   font-size: 1.5em;
@@ -89,6 +79,7 @@ body {
   margin-left: 35%;
 }
 
+/* line 78, /Users/potato/code/makers/repos/acebook-connectU/app/assets/stylesheets/application.scss */
 #page-name {
   background: none;
   color: white;
