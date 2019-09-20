@@ -15,7 +15,7 @@ class UsersController < Clearance::UsersController
     end
 
     if @user.username.index(/[^a-z0-9A-Z]/)
-      flash[:message] = "Your username can only include alphabetical characters and numbers :("
+      flash[:error] = "Your username can only include alphabetical characters and numbers :("
       redirect_to sign_up_path and return
     end
 
