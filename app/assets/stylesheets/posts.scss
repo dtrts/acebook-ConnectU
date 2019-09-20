@@ -8,8 +8,8 @@ body {
 }
 
 .new-post-container {
-  width: 26%;
-  margin-left: 33.5%;
+  width: 50%;
+  margin-left: 5%;
   height: 100px;
   margin-top: 30px;
 }
@@ -28,7 +28,7 @@ textarea {
 #post-submit {
   height: 64px;
   background-color: white;
-  color: lightgrey;
+  color: rgb(3, 2, 2);
   border: none;
   margin-bottom: 25px;
   width: 19%;
@@ -42,33 +42,20 @@ textarea {
 }
 
 .post {
-  height: 300px;
-  width: 25%;
-  margin-left: 33.5%;
+  height: 180px;
+  width: 50%;
+  margin-left: 5%;
   background-color: white;
   margin-bottom: 15px;
   border-radius: 5px;
   padding: 10px 10px;
   overflow: hidden;
+  border-color: purple;
 }
 
 #post-header-container {
   height: 30px;
   width: 100%;
-}
-
-#post-profile-picture-container {
-  height: 100%;
-  width: 30px;
-  float: left;
-}
-
-#post-profile-picture {
-  background-color: black;
-  border-radius: 30px;
-  height: 100%;
-  width: 30px;
-  float: left;
 }
 
 #post-details-container {
@@ -93,17 +80,16 @@ textarea {
 
 #post-message-container {
   padding-top: 10px;
-  height: 40%;
+  height: 100%;
   width: 100%;
 }
 
 #post-message {
-    white-space:pre-wrap; 
-    width:85%;
-    float:left; 
-    word-wrap: break-word; 
-    overflow: scroll;
-    height: 100%;
+  white-space: pre-wrap;
+  width: 85%;
+  float: left;
+  word-wrap: break-word;
+  height: 100%;
 }
 
 #delete {
@@ -127,95 +113,87 @@ textarea {
 }
 
 #post-options-container {
-  width: 25%;
-  float: right;
+  width: 90%;
+  float: left;
 }
 
 #post-delete-button-container {
-  margin-left: 30%;
+  margin-left: 80%;
   width: 50%;
 }
 
 #post-edit-button-container {
-  margin-left: 30%;
+  margin-left: 85%;
   width: 50%;
 }
 
 #comment-container {
   background: white;
-  height: 40%;
   word-wrap: break-word;
   overflow: scroll;
   width: 100%;
 }
 
 #comment-text-area {
-    outline:none;
-    resize:none;
-    width: 90%;
-    height: 5%;
-    font-size:0.8em;
-    border: none;
-    font-weight: lighter; 
-    background-color: #eeeff4;
-    margin-left: 5%;
-    border-radius: 10px;
-    padding: 0 auto;
+  outline: none;
+  resize: none;
+  width: 90%;
+  height: 5%;
+  font-size: 0.8em;
+  border: none;
+  font-weight: lighter;
+  background-color: #eeeff4;
+  margin-left: 0%;
+  border-radius: 1px;
+  padding: 0 auto;
 }
 
 #name {
-    background: none;
-    border: none;
-    font-size: 1em; 
-    color: #3b5999; 
-    font-weight: bold;
+  background: none;
+  border: none;
+  font-size: 1em;
+  color: #3b5999;
+  font-weight: bold;
 }
 
 #comment-user-name {
-    float: left;
+  float: left;
 }
 
 #comment-profile-picture-container {
-    height: 20px; 
-    width: 20px; 
-    float: left;
+  height: 20px;
+  width: 20px;
+  float: left;
 }
 
-#comment-profile-picture {
-    background-color: black; 
-    border-radius: 20px; 
-    height: 20px; 
-    width: 20px; 
-    float: left;
-}
 
 #comment-name {
-    background: none;
-    border: none;
-    font-size: 0.8em; 
-    color: #3b5999; 
-    font-weight: bold;
-    margin-left: 0;
+  background: none;
+  border: none;
+  font-size: 0.8em;
+  color: #3b5999;
+  font-weight: bold;
+  margin-left: 0;
 }
 
 #rule-container {
-    width: 80%;
-    margin-left: 10%;
+  width: 80%;
+  margin-left: 10%;
 }
 
 #comment-submit {
-    margin-left: 35%;
-    margin-top: 20px;
+  margin-left: 5%;
+  margin-top: 20px;
 }
 
 #comment-body-text {
-    white-space:pre-wrap; 
-    text-align: left;
-    word-wrap: break-word;
-    overflow: scroll;
-    margin: 0 auto;
+  white-space: pre-wrap;
+  text-align: left;
+  word-wrap: break-word;
+  overflow: scroll;
+  margin: 0 auto;
 }
 
 #comment-body-container {
-    white-space: pre-line;
+  white-space: pre-line;
 }

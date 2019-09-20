@@ -8,10 +8,13 @@
     </div>
 
     <div id="post-details-container">
-      <div id="post-user-email"><%= post.user.email %></div>
+      <div id="post-user-email"><%= post.user.username.capitalize %></div>
       <div id="post-created-at"><%= post.get_time %></div>
     </div>
     <div id="post-options-container">
+    <div id="post-message-container">
+        <div id="post-message"><%= post.message %></div>
+      </div>
       <div id="post-delete-button-container">
         <% if post.user_id == current_user.id %>
         <%=button_to 'Delete post', post_path(post), id: "delete", method: :delete %>
@@ -25,9 +28,7 @@
       </div>
 
 
-      <div id="post-message-container">
-        <div id="post-message"><%= post.message %></div>
-      </div>
+      
 
     </div>
 
@@ -37,7 +38,7 @@
   <div id="comment-container">
     <% post.comments.each do |comment| %>
     <div>
-      <strong><%= comment.user.email %></strong>
+      <strong><%= comment.user.username.capitalize %></strong> said: 
       <%= comment.body %>
     </div>
     <div id="comment-edit-button-container">
