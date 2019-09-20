@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Post Index' do
   before do
-    travel_to Time.local(1994) + 3600
+    travel_to Time.local(1994)
   end
 
   after do
