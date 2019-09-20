@@ -1,30 +1,33 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.feature "Delete posts", type: :feature do
-  scenario "A user can delete their posts" do
+RSpec.feature 'Delete posts', type: :feature do
+  scenario 'A user can delete their posts' do
     sign_in
+    post = create_post('secrets!')
+    delete_post(post.id)
 
-    visit("/posts")
-    click_button "+"
-    fill_in "post_message", with: "My new post"
-    click_on "Submit"
-    click_button "delete"
-
-    expect(page).not_to have_content("My new post")
+    expect(page).to have_content('All right then ,keep your secrets. Post deleted.')
+    expect(page).not_to have_content('secrets!')
   end
 
-  scenario "A user cannot delete other peoples posts" do
+  scenario 'A user cannot delete other peoples posts' do
     sign_in
-    visit("/posts")
-    click_on "+"
-    fill_in "post_message", with: "My new post"
-    click_on "Submit"
+    post = create_post('secrets!')
     sign_out
-    visit "/sign_up"
-    fill_in "user_email", with: "test@test.com"
-    fill_in "user_password", with: "password"
-    click_button "Sign up"
-    visit "/posts"
-    expect(page).to have_no_button('delete')
-  end 
+    sign_in
+    visit('/posts')
+    expect(find("#post-#{post.id}")).to have_no_button('delete')
+    expect(find("#post-#{post.id}")).to have_content('secrets!')
+  end
+
+  scenario 'user deletes a single post' do
+    sign_in
+    post1 = create_post('this is the post 1, the first')
+    post2 = create_post('this is the second post')
+    expect(page).to have_content('this is the post 1, the first')
+    expect(page).to have_content('this is the second post')
+    delete_post(post1.id)
+    expect(page).not_to have_content('this is the post 1, the first')
+    expect(page).to have_content('this is the second post')
+  end
 end

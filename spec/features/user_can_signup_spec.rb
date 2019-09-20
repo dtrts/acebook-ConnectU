@@ -1,25 +1,21 @@
 require 'rails_helper'
 
-RSpec.feature 'Log in/out', type: :feature do
-  scenario 'Can Sign Up' do
-    visit '/sign_up'
-    fill_in 'user_email', with: 'test@test.com'
-    fill_in 'user_password', with: 'password'
-    click_button 'Sign up'
+RSpec.feature 'Log in/out and Sign Up', type: :feature do
+  scenario 'helpful message on sign up ' do
+    sign_up_with('test@test.com', 'password')
     expect(page).to have_content('A helpful message to say you\'ve been signed in!')
   end
 
   scenario 'can not sign up with invalid email', type: :feature do
-    visit '/sign_up'
-    fill_in 'user_email', with: 'test.com'
-    click_button 'Sign up'
+    sign_in_with('not an email', 'password')
+    expect(page).to have_content('Bad email or password.')
     expect(page).not_to have_content('A helpful message to say you\'ve been signed in! Sign up Email Password Sign in')
   end
 
   scenario 'Can Log In When Already Signed Up' do
-    sign_in
-    click_button 'Sign out'
-    user = sign_in
+    user = sign_up_with('test@test.com', 'password')
+    sign_out
+    sign_in_with('test@test.com', 'password')
     expect(page).to have_content(user.email)
   end
 
@@ -28,11 +24,5 @@ RSpec.feature 'Log in/out', type: :feature do
     fill_in 'password_email', with: 'test@test.com'
     click_button 'Reset password'
     expect(page).to have_content('changing your password.')
-  end
-
-  scenario 'Can Log Out when Logged In' do
-    sign_in
-    click_button 'Sign out'
-    expect(page).to have_button('Sign in')
   end
 end
