@@ -20,6 +20,11 @@
       [=]
       <% end %>
     </div>
+    <div>
+      <%= button_to room_show_url, method: "get", id: "chat-room-button" do %>
+      [chat]
+      <% end %>
+    </div>
     <div id="sign-in-out-button-handler">
       <% if signed_in? -%>
       <%= button_to t(".sign_out"), sign_out_path, method: :delete, id: "sign-out-button"%>
