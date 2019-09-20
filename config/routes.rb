@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :room_messages
+  resources :rooms
   # resources :users, controller: 'users', only: [:create]
 
   resources :passwords, controller: 'clearance/passwords', only: %i[create new]
