@@ -10,19 +10,18 @@ RSpec.feature 'Timeline', type: :feature do
   end
 
   scenario 'A user can see a comments owner' do
-    sign_up_with('test@test.com','password','username')
+    sign_up_with('test@test.com', 'password', 'username')
     post = create_post('a post')
     create_comment('This is a comment', post.id)
     visit('/posts')
-    expect(page).to have_content('test@test.com')
+    expect(page).to have_content('This is a comment')
   end
 
   scenario 'A user sees a message to let them know the comment was posted successfully' do
-    sign_up_with('test@test.com','password','username')
+    sign_up_with('test@test.com', 'password', 'username')
     post = create_post('a post')
     create_comment('This is a comment', post.id)
 
     expect(page).to have_content('Your comment was posted successfully')
-
   end
 end
